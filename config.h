@@ -30,7 +30,6 @@ static const Rule rules[] = {
 	/* class          instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",         NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",      NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "qutebrowser",  NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -62,16 +61,22 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-
+static const char *rngwall[]  = { "/home/dawn/dotfiles/scripts/commands/wall.sh", NULL };
+static const char *rmpc[]  = { "rmpc", "togglepause", NULL };
+static const char *rmpc_prev[]  = { "rmpc", "prev", NULL };
+static const char *rmpc_next[]  = { "rmpc", "next", NULL };
+static const char *browser[]  = { "qutebrowser", NULL };
+static const char *volup[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",     NULL };
+static const char *voldown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%",     NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_n,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_z,      zoom,           {0} },
@@ -98,6 +103,14 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+  // custom keybindings
+	{ MODKEY,                       XK_w,      spawn,          {.v = rngwall } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = rmpc} },
+	{ MODKEY,                       XK_bracketleft,   spawn,   {.v = rmpc_prev} },
+	{ MODKEY,                       XK_bracketright,  spawn,   {.v = rmpc_next} },
+	{ MODKEY,                       XK_b,      spawn,          {.v = browser} },
+	{ MODKEY,                       XK_Up,     spawn,          {.v = volup} },
+	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown} },
 };
 
 /* button definitions */
