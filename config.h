@@ -13,10 +13,25 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+
+/* default colors used if xrdb is not loaded */
+static const char normbgcolor[]           = "#2e3440";
+static const char normbordercolor[]       = "#4c566a";
+static const char normfgcolor[]           = "#d8dee9";
+static const char selfgcolor[]            = "#eceff4";
+static const char selbordercolor[]        = "#a3be8c";
+static const char selbgcolor[]            = "#b48ead";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+		[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+		[SchemeSel]  = { selbgcolor,  selfgcolor,  selbordercolor  },
+		/* for bar --> {text, background, null} */
+		[SchemeStatus]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* status R */
+		[SchemeTagsSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* tag L selected */
+		[SchemeTagsNorm]  = { selbordercolor, normbgcolor,  normbgcolor  }, /* tag L unselected */
+		[SchemeInfoSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* info M selected */
+		[SchemeInfoNorm]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* info M unselected */
 };
 
 /* tagging */
