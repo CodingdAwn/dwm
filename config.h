@@ -21,15 +21,13 @@ static const char normfgcolor[]           = "#d8dee9";
 static const char selfgcolor[]            = "#eceff4";
 static const char selbordercolor[]        = "#a3be8c";
 static const char selbgcolor[]            = "#b48ead";
-static const char statusbarbg[]           = "#3a9e9e";
-
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 		[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
 		[SchemeSel]  = { selbgcolor,  selfgcolor,  selbordercolor  },
 		/* for bar --> {text, background, null} */
-		[SchemeStatus]  = { normfgcolor, statusbarbg,  normbgcolor  }, /* status R */
+		[SchemeStatus]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* status R */
 		[SchemeTagsSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* tag L selected */
 		[SchemeTagsNorm]  = { selbordercolor, normbgcolor,  normbgcolor  }, /* tag L unselected */
 		[SchemeInfoSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* info M selected */
@@ -87,6 +85,8 @@ static const char *rmpc_next[]= { "music_control.sh", "next", NULL };
 static const char *browser[]  = { "qutebrowser", NULL };
 static const char *volup[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",     NULL };
 static const char *voldown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%",     NULL };
+static const char *lockcmd[] = { "slock", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
@@ -124,12 +124,13 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
   // custom keybindings
 	{ MODKEY,                       XK_w,      spawn,          {.v = rngwall } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = rmpc} },
-	{ MODKEY,                       XK_bracketleft,   spawn,   {.v = rmpc_prev} },
-	{ MODKEY,                       XK_bracketright,  spawn,   {.v = rmpc_next} },
-	{ MODKEY,                       XK_b,      spawn,          {.v = browser} },
-	{ MODKEY,                       XK_Up,     spawn,          {.v = volup} },
-	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown} },
+	{ MODKEY,                       XK_p,      spawn,          {.v = rmpc } },
+	{ MODKEY|ShiftMask,             XK_u,      spawn,          {.v = lockcmd } },
+	{ MODKEY,                       XK_bracketleft,   spawn,   {.v = rmpc_prev } },
+	{ MODKEY,                       XK_bracketright,  spawn,   {.v = rmpc_next } },
+	{ MODKEY,                       XK_b,      spawn,          {.v = browser } },
+	{ MODKEY,                       XK_Up,     spawn,          {.v = volup } },
+	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown } },
 };
 
 /* button definitions */
