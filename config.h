@@ -21,13 +21,15 @@ static const char normfgcolor[]           = "#d8dee9";
 static const char selfgcolor[]            = "#eceff4";
 static const char selbordercolor[]        = "#a3be8c";
 static const char selbgcolor[]            = "#b48ead";
+static const char statusbarbg[]           = "#3a9e9e";
+
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 		[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
 		[SchemeSel]  = { selbgcolor,  selfgcolor,  selbordercolor  },
 		/* for bar --> {text, background, null} */
-		[SchemeStatus]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* status R */
+		[SchemeStatus]  = { normfgcolor, statusbarbg,  normbgcolor  }, /* status R */
 		[SchemeTagsSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* tag L selected */
 		[SchemeTagsNorm]  = { selbordercolor, normbgcolor,  normbgcolor  }, /* tag L unselected */
 		[SchemeInfoSel]  = { normfgcolor, normbgcolor,  normbgcolor  }, /* info M selected */
