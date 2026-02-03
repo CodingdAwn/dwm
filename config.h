@@ -86,6 +86,7 @@ static const char *browser[]  = { "qutebrowser", NULL };
 static const char *volup[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",     NULL };
 static const char *voldown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%",     NULL };
 static const char *lockcmd[] = { "slock", NULL };
+static const char *conflistcmd[] = { "dmenu_freq_path.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -129,6 +130,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_bracketleft,   spawn,   {.v = rmpc_prev } },
 	{ MODKEY,                       XK_bracketright,  spawn,   {.v = rmpc_next } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = browser } },
+	{ MODKEY,                       XK_c,      spawn,          {.v = conflistcmd } },
 	{ MODKEY,                       XK_Up,     spawn,          {.v = volup } },
 	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown } },
 };
