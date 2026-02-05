@@ -88,7 +88,7 @@ static const char *voldown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "
 static const char *lockcmd[] = { "slock", NULL };
 static const char *conflistcmd[] = { "dmenu_freq_path.sh", NULL };
 static const char *translator[] = { "translate-selection.sh", NULL };
-
+static const char *flameshot[] = { "flameshot", "gui", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -134,6 +134,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_b,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = conflistcmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = translator } },
+	{ MODKEY,                       XK_a,      spawn,          {.v = flameshot } },
 	{ MODKEY,                       XK_Up,     spawn,          {.v = volup } },
 	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown } },
 };
